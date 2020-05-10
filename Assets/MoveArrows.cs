@@ -2,17 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class MoveArrows : MonoBehaviour
 {
     [SerializeField] private GameObject _secondsPivot;
     [SerializeField] private GameObject _minutePivot;
     [SerializeField] private GameObject _hourPivot;
-    [SerializeField] private GameObject rotateCenter;
+    [SerializeField] private GameObject _rotateCenter;
     private Vector3 _clockCenter;
     private void Start()
     {
-        _clockCenter = rotateCenter.GetComponent<Transform>().localPosition;
+        _clockCenter = _rotateCenter.GetComponent<Transform>().localPosition;
     }
     
 
@@ -23,9 +24,8 @@ public class MoveArrows : MonoBehaviour
 
     private void Update()
     {
-       MovingArrows(_secondsPivot,20f); //360градусов/60 секунд = 6 градусов в секунду
-       MovingArrows(_minutePivot,10f);     //0.06f
+       MovingArrows(_secondsPivot,20f);   //3.6f   
+       MovingArrows(_minutePivot,10f);   //0.06f
        MovingArrows(_hourPivot, 5f);    // 0.005f
     }
-    
 }
